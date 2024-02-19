@@ -266,7 +266,7 @@ bytecode.cvd database is up-to-date (version: 334, sigs: 91, f-level: 90, builde
 
 ## Recommended ClamAV add-ons:
 
-I would highliy recommend you to add/test the following unofficial ClamAV databases to your locally available ClamAV DB's:
+I would highly recommend you to add/test the following unofficial ClamAV databases to your locally available ClamAV DB's:
 
 - The ClamAV database files available on this repository: https://github.com/ditekshen/detection
 - The SecuriteInfo ClamAV databases in "Pro Subscription": https://www.securiteinfo.com/clamav-antivirus/improve-detection-rate-of-zero-day-malwares-for-clamav.shtml?lg=en
