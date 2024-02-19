@@ -12,7 +12,7 @@ This implementation has been influenced by this repository [c_icapClamav](https:
 
 A few notes before you start:
 - You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
-- Obviously, you can submit to ICAP what you can read, therefore [SSL Bumping/SSL intercpetion](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
+- Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL intercpetion](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 
 ## Proxmox PVE container creation:
 ### Download/Get the latest Alpine LXC template
@@ -133,6 +133,7 @@ cp -R en/ en-US/
 reboot
 ````
 
+## Verfying our setup
 ### Confirming our ClamAV databases are stored locally:
 ````
 cICAP:~# ls -lsah /var/lib/clamav/
@@ -184,7 +185,6 @@ total 373M
    4.0K -rw-r--r--    1 clamav   clamav      2.7K Feb 18 16:08 winnow_spam_complete.ndb
 ````
 
-## Verfying our setup
 ### Confirm our process are up and running:
 ````
 cICAP:~#
