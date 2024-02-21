@@ -185,6 +185,16 @@ total 373M
    4.0K -rw-r--r--    1 clamav   clamav      2.7K Feb 18 16:08 winnow_spam_complete.ndb
 ````
 
+### Listing the ClamAV loaded databases:
+````
+cICAP:~# clamscan --debug 2>&1 /dev/null | grep "loaded"
+LibClamAV debug: unrar support loaded from /usr/lib/libclamunrar_iface.so.12.0.1
+LibClamAV debug: /var/lib/clamav/sigwhitelist.ign2 loaded
+LibClamAV debug: /var/lib/clamav/securiteinfo.ign2 loaded
+LibClamAV debug: daily.info loaded
+...
+````
+
 ### Confirm our process are up and running:
 ````
 cICAP:~#
