@@ -218,7 +218,7 @@ cICAP:~#
 cICAP:~#
 ````
 
-### Confirming our c-icap server is ready and serving (your Proxy <--> c-icap integration is functional):
+### Confirming our c-icap server is ready and serving (assuming your Proxy <--> c-icap integration is functional):
 ````
 cat /opt/c-icap/var/log/server.log
 tail -f /opt/c-icap/var/log/server.log
