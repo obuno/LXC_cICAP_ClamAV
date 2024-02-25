@@ -22,7 +22,7 @@ pveam update
 pveam available | grep alpine
 pveam download local alpine-3.19-default_20240207_amd64.tar.xz
 ````
-### Create our LXC container (mind the container ID & change the password):
+### Create your LXC container (mind the container ID & change the password):
 ````
 pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
 --storage local-lvm --ostype alpine \
