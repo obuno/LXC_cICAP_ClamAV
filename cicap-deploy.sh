@@ -100,6 +100,8 @@
     cd /opt/c-icap/share/c_icap/templates/virus_scan/
     cp -R en/ en-US/
 
+    cp /opt/c-icap/bin/c-icap-client /usr/local/bin/
+
     echo "; ####################################################"
     echo "; ###### cICAP deploymwent END #######################"
     echo "; ####################################################"    
