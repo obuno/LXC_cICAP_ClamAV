@@ -11,7 +11,7 @@ The idea here is to create an LXC Alpine based container that will host:
 This implementation has been influenced by this repository [c_icapClamav](https://github.com/nkapashi/c_icapClamav) which is held toward Docker environements. I do not "dislike" Docker at all, although as I'm running PVE in my personal setups, I find PVE + LXC very handy and convenient in terms of updates, backups and so on. Docker in my own setups pretty much always means two or more layers of virtualization, which I tend to avoid if not puerly for demo's etc.
 
 A few notes before you start:
-- You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information abuot it [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
+- You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information about it [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
 - Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL intercpetion](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The "ConcurrentDatabaseReload yes" parameter which is set within the /etc/clamav/clamd.conf file will require you to have enough free system resources (memory) in order to temporarily load a second scanning engine while scanning continues using the first engine. Once loaded, the new engine takes over.
 
