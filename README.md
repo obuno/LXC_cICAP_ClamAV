@@ -130,6 +130,8 @@ cp -R en/ en-US/
 cd /opt/c-icap/share/c_icap/templates/virus_scan/
 cp -R en/ en-US/
 
+cp /opt/c-icap/bin/c-icap-client /usr/local/bin/
+
 reboot
 ````
 
@@ -271,6 +273,23 @@ ClamAV update process started at Sun Feb 18 17:00:00 2024
 daily.cld database is up-to-date (version: 27189, sigs: 2053641, f-level: 90, builder: raynman)
 main.cvd database is up-to-date (version: 62, sigs: 6647427, f-level: 90, builder: sigmgr)
 bytecode.cvd database is up-to-date (version: 334, sigs: 91, f-level: 90, builder: anvilleg)
+...
+````
+
+## Listing the running c-icap server statistics
+
+````
+cICAP:~# c-icap-client -s "info?view=text" -i 0.0.0.0 -p 1344 -req use-any-url
+ICAP server:0.0.0.0, ip:127.0.0.1, port:1344
+
+Running Servers Statistics
+===========================
+Children number: 3
+Free Servers: 27
+Used Servers: 3
+Started Processes: 6
+Closed Processes: 3
+Crashed Processes: 0
 ...
 ````
 
