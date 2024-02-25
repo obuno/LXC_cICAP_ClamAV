@@ -5,7 +5,7 @@
 mkdir -p /run/clamav
 chown -R clamav:clamav /run/clamav
 
-echo "INFO: Starting up CLAMD service. Waiting for up to a minute for the service to start."
+echo "INFO: Starting up clamd service. Waiting for the clamd service to start."
 /usr/sbin/clamd &
 sleep 90
 # Waiting for Clamd to create the socket
