@@ -111,6 +111,7 @@ EOF
 
 cat << 'EOF' > /root/.ashrc
 alias clam-logs='tail -f /var/log/clamav/clamd.log /var/log/clamav/freshclam-hourly.log'
+alias clam-dbs='clamscan --debug 2>&1 /dev/null | grep "loaded"'
 alias icap-logs='tail -f /opt/c-icap/var/log/server.log'
 alias icap-stat='c-icap-client -s '"'"'info?view=text'"'"' -i 0.0.0.0 -p 1344 -req use-any-url'
 alias ls='ls -lsah'
