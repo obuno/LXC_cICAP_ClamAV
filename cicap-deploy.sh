@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ####################################################################################################################################################
-# This script will do everything in one shot -- You need to copy/paste and run this shell script from your freshly setup Alpine LXC container...
+# This script will do everything in one shot -- You need to paste and run this shell script...
 #
 # Boot your container, paste the contents of this file in a local file and run it..
 #
@@ -16,7 +16,7 @@ echo "; ####################################################"
 echo "; ###### cICAP deploymwent START #####################"
 echo "; ####################################################"
 
-export cicapBaseVersion="0.5.12" 
+export cicapBaseVersion="0.6.2" 
 export cicapModuleVersion="0.5.7"
 
 mkdir -p \
@@ -52,7 +52,7 @@ echo "; ####################################################"
 echo "; ###### c_icap base & module compilation ############"
 echo "; ####################################################"
  
-curl --silent --location --remote-name "http://downloads.sourceforge.net/project/c-icap/c-icap/0.5.x/c_icap-${cicapBaseVersion}.tar.gz"
+curl --silent --location --remote-name "http://downloads.sourceforge.net/project/c-icap/c-icap/0.6.x/c_icap-${cicapBaseVersion}.tar.gz"
 curl --silent --location --remote-name "https://sourceforge.net/projects/c-icap/files/c-icap-modules/0.5.x/c_icap_modules-${cicapModuleVersion}.tar.gz"
 
 tar -xzf "c_icap-${cicapBaseVersion}.tar.gz" 
