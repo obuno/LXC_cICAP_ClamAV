@@ -133,6 +133,21 @@ cp -R en/ en-US/
 
 cp /opt/c-icap/bin/c-icap-client /usr/local/bin/
 
+sed -i '/unset/i. $HOME/.profile' /etc/profile
+
+cat << 'EOF' > /root/.profile
+ENV=$HOME/.ashrc; export ENV
+. $ENV
+EOF
+
+cat << 'EOF' > /root/.ashrc
+alias clam-logs='tail -f /var/log/clamav/clamd.log /var/log/clamav/freshclam-hourly.log'
+alias icap-logs='tail -f /opt/c-icap/var/log/server.log'
+alias icap-stat='c-icap-client -s '"'"'info?view=text'"'"' -i 0.0.0.0 -p 1344 -req use-any-url'
+alias ls='ls -lsah'
+alias size='for i in G M K; do    du -ah | grep [0-9]$i | sort -nr -k 1; done | head -n 11'
+EOF
+
 reboot
 ````
 
