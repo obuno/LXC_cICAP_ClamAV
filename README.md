@@ -15,6 +15,8 @@ A few notes before you start:
 - Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL intercpetion](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The "ConcurrentDatabaseReload yes" parameter which is set within the /etc/clamav/clamd.conf file will require you to have enough free system resources (memory) in order to temporarily load a second ClamAV scanning engine while scanning continues using the first engine. Once fully loaded, the new engine takes over while the previous goes to heaven.
 
+You can use the included "cicap-deploy.sh" shell script to deploy everything needed at once.
+
 ## Proxmox PVE container creation:
 ### Download/Get the latest Alpine LXC template
 ````
@@ -35,7 +37,7 @@ pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
 
 pct start 100
 ````
-### Should you want to address a static TCP/IP stack/gw within a dedicated VLAN:
+### Should you need to address a static TCP/IP stack/gw within a dedicated VLAN:
 ````
 pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
 --storage local-lvm --ostype alpine \
@@ -142,6 +144,7 @@ EOF
 
 cat << 'EOF' > /root/.ashrc
 alias clam-logs='tail -f /var/log/clamav/clamd.log /var/log/clamav/freshclam-hourly.log'
+alias clam-dbs='clamscan --debug 2>&1 /dev/null | grep "loaded"'
 alias icap-logs='tail -f /opt/c-icap/var/log/server.log'
 alias icap-stat='c-icap-client -s '"'"'info?view=text'"'"' -i 0.0.0.0 -p 1344 -req use-any-url'
 alias ls='ls -lsah'
@@ -313,7 +316,7 @@ Crashed Processes: 0
 
 I would highly recommend you to add/test the following unofficial ClamAV databases to your locally available ClamAV DB's:
 
-- The ClamAV database files available on this repository: https://github.com/ditekshen/detection
+- The ClamAV database files available on this repository: https://github.com/ditekshen/detection (already included in the configuration here)
 - The SecuriteInfo ClamAV databases in "Pro Subscription": https://www.securiteinfo.com/clamav-antivirus/improve-detection-rate-of-zero-day-malwares-for-clamav.shtml?lg=en
 
 ## Testing your setup:
