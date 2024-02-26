@@ -1,11 +1,10 @@
 #!/bin/sh
 
 ####################################################################################################################################################
-# This script will do everything in one shot -- You need GIT installed before being able to run this shell script...
+# This script will do everything in one shot -- You need to copy/paste and run this shell script from your freshly setup Alpine LXC container...
 #
-# Boot your container, manually install git, paste the contents of this file in a local file and run it..
+# Boot your container, paste the contents of this file in a local file and run it..
 #
-#    cICAP:~# apk --update --no-cache add git 
 #    cICAP:~# vi cicap-deploy.sh
 #    cICAP:~# sh cicap-deploy.sh
 #
@@ -40,6 +39,7 @@ apk --update --no-cache add \
     zlib-dev \
     curl tar \
     gcc make \
+    git \
     g++ \
     iproute2 \
     nano \
