@@ -53,7 +53,7 @@ pct start 100
 
 ### Install the needed components:
 ````
-export cicapBaseVersion="0.5.12" 
+export cicapBaseVersion="0.6.2" 
 export cicapModuleVersion="0.5.7"
 
 mkdir -p \
@@ -84,7 +84,7 @@ apk --update --no-cache add \
 
 ### Get the needed source code and compile it:
 ````
-curl --silent --location --remote-name "http://downloads.sourceforge.net/project/c-icap/c-icap/0.5.x/c_icap-${cicapBaseVersion}.tar.gz"
+curl --silent --location --remote-name "http://downloads.sourceforge.net/project/c-icap/c-icap/0.6.x/c_icap-${cicapBaseVersion}.tar.gz"
 curl --silent --location --remote-name "https://sourceforge.net/projects/c-icap/files/c-icap-modules/0.5.x/c_icap_modules-${cicapModuleVersion}.tar.gz"
 
 tar -xzf "c_icap-${cicapBaseVersion}.tar.gz" 
