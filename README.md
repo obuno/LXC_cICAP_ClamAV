@@ -298,7 +298,7 @@ bytecode.cvd database is up-to-date (version: 334, sigs: 91, f-level: 90, builde
 ## Listing the running c-icap server statistics
 
 ````
-cICAP:~# c-icap-client -s "info?view=text" -i 0.0.0.0 -p 1344 -req use-any-url
+cICAP:~# c-icap-client -s "info?table=*?view=text" -i 0.0.0.0 -p 1344 -req use-any-url
 ICAP server:0.0.0.0, ip:127.0.0.1, port:1344
 
 Running Servers Statistics
