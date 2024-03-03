@@ -1,6 +1,6 @@
 # LXC_cICAP_ClamAV
 
-## Building an ICAP enabled Antivirus server based on c-icap, clamav and Alpine Linux on Proxmox PVE/LXC container.
+## Building an ICAP enabled AntiVirus Server based on c-icap, ClamAV and Alpine Linux on Proxmox PVE/LXC container.
 
 The idea here is to create an LXC Alpine based container that will host:
 - [c-icap server](https://github.com/c-icap/c-icap-server) as our HTTP proxy ICAP content adaptation and filtering services.
