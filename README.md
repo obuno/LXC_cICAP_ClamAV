@@ -6,7 +6,7 @@ The idea here is to create an LXC Alpine based container that will host:
 - [c-icap server](https://github.com/c-icap/c-icap-server) as our HTTP proxy ICAP content adaptation and filtering services.
 - [ClamAV](https://github.com/Cisco-Talos/clamav) as our backend AntiVirus scanning system upon ICAP submissions.
 - The ClamAV official signatures databases.
-- 3rd party unoffical ClamAV sginatures databases boosting our defenses.
+- 3rd party unoffical ClamAV sginatures databases enhancing our defenses.
 
 This implementation has been influenced by this repository [c_icapClamav](https://github.com/nkapashi/c_icapClamav) which is held toward Docker environements. I do not "dislike" Docker at all, although as I'm running PVE in my personal setups, I find PVE + LXC very handy and convenient in terms of updates, backups and so on. Docker in my own setups pretty much always means two or more layers of virtualization, which I tend to avoid if not puerly for demo's etc.
 
