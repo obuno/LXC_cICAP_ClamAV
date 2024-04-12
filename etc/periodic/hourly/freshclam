@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/freshclam --quiet --log=/var/log/clamav/freshclam-hourly.log
