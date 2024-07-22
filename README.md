@@ -36,11 +36,11 @@ The idea here is to create an LXC Alpine based container that will host:
                                                        192.168/16  
 ````
 
-This implementation has been influenced by this repository [c_icapClamav](https://github.com/nkapashi/c_icapClamav) which is held toward Docker environements. I do not "dislike" Docker at all, although as I'm running PVE in my personal setups, I find PVE + LXC very handy and convenient in terms of updates, backups and so on. Docker in my own setups pretty much always means two or more layers of virtualization, which I tend to avoid if not puerly for demo's etc.
+This implementation has been influenced by this repository [c_icapClamav](https://github.com/nkapashi/c_icapClamav) which is held toward Docker environments. I do not "dislike" Docker at all, although as I'm running PVE in my personal setups, I find PVE + LXC very handy and convenient in terms of updates, backups and so on. Docker in my own setups pretty much always means two or more layers of virtualization, which I tend to avoid if not purely for demo's etc.
 
 A few notes before you start:
 - You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information about this [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
-- Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL intercpetion](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
+- Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL interception](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The ```ConcurrentDatabaseReload yes``` parameter which is set within [```/etc/clamav/clamd.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/clamav/clamd.conf) will require you to have enough free system resources (2x operational used memory, 4GB shall be enough) in order to temporarily load a second ClamAV scanning engine while scanning continues using the first engine. Once fully loaded, the new engine takes over while the previous goes to heaven.
 - You're able to address either SquidClamAV service [OR] the srv_clamav c-icap service, can be useful for testings etc.
 - [```MALWARE_FOUND```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/share/c_icap/templates/squidclamav/en-US/MALWARE_FOUND) replacement HTML page has been customized in order to provide a somewhat btter looking block page in the occurence of offending bits found by ClamAV (see below).
@@ -81,12 +81,14 @@ The main differences are the apk packages retrieved, the ```/main/``` repository
 The provided script will do everything in one shot -- You need to gather and run the shell script.
 Create & boot your container (see above), get the script contents in a local file and run it. 
 
-I.E. running the deployment script and opting for the ```/edge/``` Alpine repository:
 ````
 cICAP:/# mkdir -p /tmp/install && cd /tmp/install
 cICAP:/tmp/install# wget https://raw.githubusercontent.com/obuno/LXC_cICAP_ClamAV/main/cicap-deploy.sh
 cICAP:/tmp/install# sh cicap-deploy.sh
 ````
+
+I.E. running the deployment script and opting for the ```/edge/``` Alpine repository:
+
 ````
 ; ####################################################
 ; ###### cICAP deployment START ######################
@@ -99,7 +101,7 @@ cICAP:/tmp/install# sh cicap-deploy.sh
 ; ####################################################
 ; ###### apk update & add ############################
 ; ####################################################
-[*] Do you want to use the Alpine Edge Repository? (Y/n) y
+[*] Do you want to use the Alpine Edge Repository? (Y/n) y  --> Answering NO here will get you /latest-stable/ Alpine setup.
 ...
 ````
 
@@ -247,11 +249,18 @@ Crashed Processes: 0
 ...
 ````
 
+## Unofficial ClamAV provided Signatures (through freshclam):
+
+- [SaneSecurity](https://sanesecurity.org/usage/signatures/)
+- [R-fx Networks - Linux Malware Detect](https://www.rfxn.com/tag/malware/)
+- [Ditekshen](https://github.com/ditekshen/detection)
+- [InterServer's InterShield](http://rbl.interserver.net/)
+- [URLhaus ClamAV signatures](https://urlhaus.abuse.ch/api/#clamav)
+
 ## Recommended ClamAV add-ons:
 
 I would highly recommend you to add/test the following unofficial ClamAV databases to your locally available ClamAV DB's:
 
-- The ClamAV database files available on this repository: https://github.com/ditekshen/detection (already included in the provided configuration)
 - The SecuriteInfo ClamAV databases in "Pro Subscription": https://www.securiteinfo.com/clamav-antivirus/improve-detection-rate-of-zero-day-malwares-for-clamav.shtml?lg=en
 
 ## Testing your setup:
