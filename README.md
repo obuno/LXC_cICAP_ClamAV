@@ -51,23 +51,23 @@ You can use the included [cicap-deploy.sh](https://github.com/obuno/LXC_cICAP_Cl
 ## 1: Proxmox PVE container creation:
 ### Download/Get the latest Alpine LXC template
 ````
-    pveam update
-    pveam available | grep alpine
-    pveam download local alpine-3.19-default_20240207_amd64.tar.xz
+pveam update
+pveam available | grep alpine
+pveam download local alpine-3.19-default_20240207_amd64.tar.xz
 ````
 ### Create your PVE LXC container -- A typical PVE LXC container PVE cli that would suite our needs: (mind the container ID, admin password, vlan tags, IPs etc.. adapt to your environment):
 ````
-    pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
-    --storage local-lvm --ostype alpine \
-    --arch amd64 --password ChangeMe --unprivileged 1 \
-    --cores 4 --memory 4096 --swap 4096 \
-    --hostname cICAP --rootfs volume=local-lvm:16 \
-    --nameserver 9.9.9.9 --searchdomain local.lan \
-    --net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.44/24,gw=192.168.1.254,type=veth \
-    --net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.44/24,type=veth \
-    --start false
+pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
+--storage local-lvm --ostype alpine \
+--arch amd64 --password ChangeMe --unprivileged 1 \
+--cores 4 --memory 4096 --swap 4096 \
+--hostname cICAP --rootfs volume=local-lvm:16 \
+--nameserver 9.9.9.9 --searchdomain local.lan \
+--net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.44/24,gw=192.168.1.254,type=veth \
+--net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.44/24,type=veth \
+--start fals
 
-    pct start 100
+pct start 100
 ````
 ## 2: Install the needed components on our newly created/booted Alpine LXC Container:
 
