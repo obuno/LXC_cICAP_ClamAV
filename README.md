@@ -65,7 +65,7 @@ pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
 --nameserver 9.9.9.9 --searchdomain local.lan \
 --net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.44/24,gw=192.168.1.254,type=veth \
 --net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.44/24,type=veth \
---start fals
+--start false
 
 pct start 100
 ````
