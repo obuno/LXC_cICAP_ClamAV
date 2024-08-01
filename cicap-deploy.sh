@@ -243,6 +243,12 @@ tar -xzf "c_icap_modules-${cicapModuleVersion}.tar.gz"
 
 cd c_icap-${cicapBaseVersion}
 ./configure --quiet --prefix=/opt/c-icap --enable-large-files
+
+# Reaplace HTTP 1.0 with HTTP 1.1
+sed -i 's/HTTP\/1.0/HTTP\/1.1/g' utils/c-icap-client.c
+sed -i 's/HTTP\/1.0/HTTP\/1.1/g' icap_send_file.c
+sed -i 's/HTTP\/1.0/HTTP\/1.1/g' info.c
+
 make
 make install
 
@@ -290,6 +296,10 @@ cd /tmp/install/
 git clone https://github.com/darold/squidclamav.git
 cd squidclamav/
 ./configure --with-c-icap=/opt/c-icap
+
+# Reaplace HTTP 1.0 with HTTP 1.1
+sed -i 's/HTTP\/1.0/HTTP\/1.1/g' src/squidclamav.c
+
 make && make install
 
 chmod 0755 /etc/periodic/hourly/freshclam
