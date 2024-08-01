@@ -246,7 +246,6 @@ cd c_icap-${cicapBaseVersion}
 
 # Reaplace HTTP 1.0 with HTTP 1.1
 sed -i 's/HTTP\/1.0/HTTP\/1.1/g' utils/c-icap-client.c
-sed -i 's/HTTP\/1.0/HTTP\/1.1/g' icap_send_file.c
 sed -i 's/HTTP\/1.0/HTTP\/1.1/g' info.c
 
 make
