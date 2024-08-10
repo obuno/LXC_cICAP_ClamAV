@@ -43,7 +43,7 @@ A few notes before you start:
 - Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL interception](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The ```ConcurrentDatabaseReload yes``` parameter which is set within [```/etc/clamav/clamd.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/clamav/clamd.conf) will require you to have enough free system resources (2x operational used memory, 4GB shall be enough) in order to temporarily load a second ClamAV scanning engine while scanning continues using the first engine. Once fully loaded, the new engine takes over while the previous goes to heaven.
 - You're able to address either SquidClamAV service [OR] the srv_clamav c-icap service, can be useful for testings etc.
-- [```MALWARE_FOUND```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/share/c_icap/templates/squidclamav/en-US/MALWARE_FOUND) replacement HTML page has been customized in order to provide a somewhat btter looking block page in the occurence of offending bits found by ClamAV (see below).
+- [```MALWARE_FOUND```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/share/c_icap/templates/squidclamav/en-US/MALWARE_FOUND) replacement HTML page has been customized in order to provide a somewhat better looking block page in the occurrence of offending bits found by ClamAV (see below).
 <img src="images/MALWARE_FOUND.png" />
 
 You can use the included [cicap-deploy.sh](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/cicap-deploy.sh) shell script to deploy/compile everything needed at once.
