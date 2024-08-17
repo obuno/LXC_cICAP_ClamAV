@@ -44,14 +44,14 @@ A few notes before you start:
 - You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information about this [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
 - Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL interception](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The ```ConcurrentDatabaseReload yes``` parameter which is set within [```/etc/clamav/clamd.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/clamav/clamd.conf) will require you to have enough free system resources (2x operational used memory, 4GB shall be enough) in order to temporarily load a second ClamAV scanning engine while scanning continues using the first engine. Once fully loaded, the new engine takes over while the previous goes to heaven.
-- You're able to address either SquidClamAV service [OR] the srv_clamav c-icap service, can be useful for testings etc.
+- You're able to address either SquidClamAV service [OR] the srv_clamav c-icap service, which can be useful for testings etc.
 - [```MALWARE_FOUND```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/share/c_icap/templates/squidclamav/en-US/MALWARE_FOUND) replacement HTML page has been customized in order to provide a somewhat better looking block page in the occurrence of offending bits found by ClamAV (see below).
 <img src="images/MALWARE_FOUND.png" />
 
 You can use the included [cicap-deploy.sh](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/cicap-deploy.sh) shell script to deploy/compile everything needed at once.
 
 ## 1: Proxmox PVE container creation:
-### Download/Get the latest Alpine LXC template
+### Download/Get the latest Alpine LXC template on Proxmox
 ````
 pveam update
 pveam available | grep alpine
@@ -80,8 +80,7 @@ There are two options using the deployment script provided:
 
 The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.1](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
-The provided script will do everything in one shot -- You need to gather and run the shell script.
-Create & boot your container (see above), get the script contents in a local file and run it. 
+The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 
 ````
 cICAP:/# mkdir -p /tmp/install && cd /tmp/install
