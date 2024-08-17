@@ -9,7 +9,7 @@ The idea of this project is to create an Alpine based LXC container that will ho
 - The [ClamAV official signatures databases](https://lists.clamav.net/pipermail/clamav-virusdb/).
 - 3rd party unoffical ClamAV sginatures databases enhancing our defenses.
 
-Basically, the ideal Proxy Server's companion offloading all on-the-fly AntiVirus tasks.
+Basically, the ideal Proxy Server's companion thus offloading all the on-the-fly AntiVirus tasks through ICAP.
 
 ## Targeted physical environment --> you'll need two NIC's on your LXC container:
 ````
