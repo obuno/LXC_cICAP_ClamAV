@@ -84,7 +84,7 @@ The provided script will do everything in one shot -- You need to create & boot 
 
 ```
 mkdir -p /tmp/install && cd /tmp/install
-wg`et https://raw.githubusercontent.com/obuno/LXC_cICAP_ClamAV/main/cicap-deploy.sh
+wget https://raw.githubusercontent.com/obuno/LXC_cICAP_ClamAV/main/cicap-deploy.sh
 sh cicap-deploy.sh
 ```
 
