@@ -82,11 +82,11 @@ The main differences are the apk packages retrieved, the ```/main/``` repository
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 
-````
-cICAP:/# mkdir -p /tmp/install && cd /tmp/install
-cICAP:/tmp/install# wget https://raw.githubusercontent.com/obuno/LXC_cICAP_ClamAV/main/cicap-deploy.sh
-cICAP:/tmp/install# sh cicap-deploy.sh
-````
+```
+mkir -p /tmp/install && cd /tmp/install
+wg`et https://raw.githubusercontent.com/obuno/LXC_cICAP_ClamAV/main/cicap-deploy.sh
+sh cicap-deploy.sh
+```
 
 I.E. running the deployment script and opting for the ```/edge/``` Alpine repository:
 
