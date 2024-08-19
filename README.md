@@ -57,7 +57,7 @@ pveam update
 pveam available | grep alpine
 pveam download local alpine-3.19-default_20240207_amd64.tar.xz
 ````
-### Create your PVE LXC container -- A typical PVE LXC container PVE cli that would suite our needs: (mind the container ID, admin password, vlan tags, IPs etc.. adapt to your environment):
+### Create your PVE LXC container -- A typical PVE LXC container PVE cli that would suite our needs: (mind the container ID, admin password, bound bridges, vlan tags, IPs etc.. adapt to your environment):
 ````
 pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
 --storage local-lvm --ostype alpine \
