@@ -4,10 +4,10 @@
 
 The idea of this project is to create an Alpine based LXC container that will host:
 - [c-icap server](https://github.com/c-icap/c-icap-server) as our HTTP proxy ICAP content adaptation and filtering services.
-- [ClamAV](https://github.com/Cisco-Talos/clamav) as our backend AntiVirus scanning system upon ICAP submissions.
 - [SquidClamAV](https://github.com/darold/squidclamav) compiled & enabled as an ICAP service.
+- [ClamAV](https://github.com/Cisco-Talos/clamav) as our backend AntiVirus scanning system upon ICAP submissions.
 - The [ClamAV official signatures databases](https://lists.clamav.net/pipermail/clamav-virusdb/).
-- 3rd party unoffical ClamAV sginatures databases enhancing our defenses.
+- 3rd party unofficial ClamAV signatures databases enhancing our defenses.
 
 Basically, the ideal Proxy Server's companion thus offloading all the on-the-fly AntiVirus tasks through ICAP.
 
