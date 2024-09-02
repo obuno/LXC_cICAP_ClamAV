@@ -161,10 +161,15 @@ total 373M
 ### Listing the ClamAV loaded databases:
 ````
 cICAP:~# clamscan --debug 2>&1 /dev/null | grep "loaded"
-LibClamAV debug: unrar support loaded from /usr/lib/libclamunrar_iface.so.12.0.1
+LibClamAV debug: unrar support loaded from /usr/lib/libclamunrar_iface.so.12.0.2
+LibClamAV debug: /var/lib/clamav/localwhitelist.ign2 loaded
 LibClamAV debug: /var/lib/clamav/sigwhitelist.ign2 loaded
-LibClamAV debug: /var/lib/clamav/securiteinfo.ign2 loaded
 LibClamAV debug: daily.info loaded
+LibClamAV debug: daily.cfg loaded
+LibClamAV debug: daily.ndb loaded
+LibClamAV debug: daily.crb loaded
+LibClamAV debug: daily.ign loaded
+LibClamAV debug: daily.mdb loaded
 ...
 ````
 
@@ -191,7 +196,7 @@ Runlevel: default
 cICAP:~#
 cICAP:~# ss -utnlp
 Netid        State         Recv-Q        Send-Q               Local Address:Port                Peer Address:Port        Process                                                                                                                  
-tcp          LISTEN        0             512                  10.0.0.1:1344                     0.0.0.0:*            users:(("c-icap",pid=596,fd=5),("c-icap",pid=590,fd=5),("c-icap",pid=589,fd=5),("c-icap",pid=587,fd=5))                 
+tcp          LISTEN        0             512                  10.1.13.44:1344                     0.0.0.0:*            users:(("c-icap",pid=596,fd=5),("c-icap",pid=590,fd=5),("c-icap",pid=589,fd=5),("c-icap",pid=587,fd=5))                 
 cICAP:~# 
 cICAP:~#
 ````
@@ -285,10 +290,11 @@ https://www.virusanalyst.com/eicar.zip
    ```rc-service c-clamd restart```
 - you can spot presumed false positive signatures by running ```icap-logs | grep FOUND```
 - should you think that some signatures might trigger on false positive, you're able to [whitelist them](https://www.securiteinfo.com/clamav-antivirus/whitelisting-clamav-signatures.shtml).
+- Within my setup I'm almost always white listing this signature: ```Sanesecurity.Foxhole.GZip_js``` within a local file called ```/var/lib/clamav/localwhitelist.ign2```
 - for SquidClamAV, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1344 | Service Name = squidclamav | Type = REQMOD or RESPMOD
 - for srv_clamav, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1344 | Service Name = srv_clamav | Type = REQMOD or RESPMOD
 
-### implementation specifics:
+### implementation specifics`
 
 - the [```squidclamav.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/etc/squidclamav.conf) file includes a few 'exclusions' I find appropriate. Perhaps you do not. You can of course edit this file and comment lines in the block after line #88
 - installed packages (gcc, g++, make, etc.) are NOT removed. While I'd agree that some of them could/can be removed for security concerns, in my setups, I do not see the need for that. I keep these cICAP appliances off anything else than ICAP_TCP:1344 within the same network segment as any ICAP clients. Should you enable network remote access (ssh etc), please consider the risks of leaving all these packages installed.

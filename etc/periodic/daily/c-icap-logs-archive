@@ -10,10 +10,11 @@ for DIR in $(find ./ -name "*.log" | sed "s|^./||"); do
   echo -n "compressing $LOG_DIR/$DIR ... ";
   if tar czf "${ARCHIVE_DIR}/${ARCHIVE_DATE}_$DIR.tar.gz" "$DIR"; then
     rm -rf "$DIR";
-    echo "done" 
+    echo "done"
   else
     echo "failed";
   fi
+  mkdir -p "$LOG_DIR";
 done
 
 ##### reconfigure seems to crash, investigating...
