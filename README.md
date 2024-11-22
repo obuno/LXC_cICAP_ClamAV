@@ -295,7 +295,7 @@ https://www.virusanalyst.com/eicar.zip
 - for SquidClamAV, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1344 | Service Name = squidclamav | Type = REQMOD or RESPMOD
 - for srv_clamav, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1344 | Service Name = srv_clamav | Type = REQMOD or RESPMOD
 
-### implementation specifics`
+### implementation specifics:
 
 - the [```squidclamav.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/etc/squidclamav.conf) file includes a few 'exclusions' I find appropriate. Perhaps you do not. You can of course edit this file and comment lines in the block after line #88
 - installed packages (gcc, g++, make, etc.) are NOT removed. While I'd agree that some of them could/can be removed for security concerns, in my setups, I do not see the need for that. I keep these cICAP appliances off anything else than ICAP_TCP:1344 within the same network segment as any ICAP clients. Should you enable network remote access (ssh etc), please consider the risks of leaving all these packages installed.
