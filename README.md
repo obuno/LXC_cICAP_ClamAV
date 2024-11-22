@@ -78,7 +78,7 @@ There are two options using the deployment script provided:
 - Deploy Alpine Linux distribution using the ```/main/``` repository
 - Deploy Alpine Linux distribution using the ```/edge/``` repository
 
-The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.1](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
+The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 
@@ -289,6 +289,7 @@ https://www.virusanalyst.com/eicar.zip
    ```rc-service c-icap restart```   
    ```rc-service c-clamd restart```
 - you can spot presumed false positive signatures by running ```icap-logs | grep FOUND```
+- you can view in real time the client IP, requested URL's and potential matching ClamAV signature using ```icap-logs | egrep "X-Client-IP|URL requested|FOUND"```
 - should you think that some signatures might trigger on false positive, you're able to [whitelist them](https://www.securiteinfo.com/clamav-antivirus/whitelisting-clamav-signatures.shtml).
 - Within my setup I'm almost always white listing this signature: ```Sanesecurity.Foxhole.GZip_js``` within a local file called ```/var/lib/clamav/localwhitelist.ign2```
 - for SquidClamAV, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1344 | Service Name = squidclamav | Type = REQMOD or RESPMOD
