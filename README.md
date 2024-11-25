@@ -305,3 +305,4 @@ https://www.virusanalyst.com/eicar.zip
 - [x] the c-icap service definition fails to stop/restart on the first attempt --> 👍 10/04/2024   
 - [x] the c-icap service now run's on a non root ```cicap``` system user account --> 👍 21/07/2024
 - [x] the ```/var/log/c-icap/server.log``` file get's big over time -- see [```c-icap-logs-archive```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/periodic/daily/c-icap-logs-archive) --> 👍 21/07/2024
+- [x] user experience improvements on the ```cicap-deploy.sh``` script --> 👍 25/11/2024
