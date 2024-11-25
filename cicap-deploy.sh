@@ -179,7 +179,8 @@ read answer
 echo    # (optional) move to a new line
 if [ "$answer" != "${answer#[Yy]}" ] ;then
 
-    sed -i -e 's/v3\.19/edge/g' /etc/apk/repositories
+    cp /etc/apk/repositories /etc/apk/repositories.default
+    sed -i -e 's/v[0-9]\.[0-9][0-9]/edge/g' /etc/apk/repositories
 
     apk add --upgrade apk-tools
     apk upgrade --available
@@ -205,7 +206,8 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 
     else
 
-        sed -i -e 's/v3\.19/latest-stable/g' /etc/apk/repositories
+        cp /etc/apk/repositories /etc/apk/repositories.default
+        sed -i -e 's/v[0-9]\.[0-9][0-9]/latest-stable/g' /etc/apk/repositories
 
         apk add --upgrade apk-tools
         apk upgrade --available

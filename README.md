@@ -55,11 +55,11 @@ You can use the included [cicap-deploy.sh](https://github.com/obuno/LXC_cICAP_Cl
 ````
 pveam update
 pveam available | grep alpine
-pveam download local alpine-3.19-default_20240207_amd64.tar.xz
+pveam download local alpine-3.20-default_20240908_amd64.tar.xz
 ````
 ### Create your PVE LXC container -- A typical PVE LXC container PVE cli that would suite our needs: (mind the container ID, admin password, bound bridges, vlan tags, IPs etc.. adapt to your environment):
 ````
-pct create 100 local:vztmpl/alpine-3.19-default_20240207_amd64.tar.xz \
+pct create 100 local:vztmpl/alpine-3.20-default_20240908_amd64.tar.xz \
 --storage local-lvm --ostype alpine \
 --arch amd64 --password ChangeMe --unprivileged 1 \
 --cores 4 --memory 4096 --swap 4096 \
@@ -78,7 +78,7 @@ There are two options using the deployment script provided:
 - Deploy Alpine Linux distribution using the ```/main/``` repository
 - Deploy Alpine Linux distribution using the ```/edge/``` repository
 
-The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
+The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 
