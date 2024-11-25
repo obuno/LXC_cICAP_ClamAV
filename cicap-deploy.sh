@@ -98,8 +98,7 @@ function fsetICAPIP() {
              sed -i -e 's/Port 1344/Port '$eth0':1344/g' /opt/c-icap/etc/c-icap.conf
              sed -i -e 's/ServerName.*/ServerName '"$(hostname)"'/' /opt/c-icap/etc/c-icap.conf
         else
-             printf ${red}"[*] Please give in a valid interface name -- Exiting"${default}
-             break
+             printf ${red}"[*] Please give in a valid interface name:\n"${default} ; fsetICAPIP
         fi
     fi
 }
