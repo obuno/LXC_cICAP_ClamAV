@@ -78,7 +78,7 @@ There are two options using the deployment script provided:
 - Deploy Alpine Linux distribution using the ```/main/``` repository
 - Deploy Alpine Linux distribution using the ```/edge/``` repository
 
-The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.3.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
+The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.4.1-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 
@@ -279,6 +279,14 @@ https://www.amtso.org/security-features-check/
 https://www.ikarussecurity.com/wp-content/downloads/eicar_com.zip   
 https://pkg.opnsense.org/test/eicar.com.txt   
 https://www.virusanalyst.com/eicar.zip   
+
+
+## Updates and maintenance:
+
+You can easily maintain you Alpine setup using the apk update/upgrade routine:
+
+- ```apk update```
+- ```apk upgrade```
 
 ## Troubleshooting:
 
