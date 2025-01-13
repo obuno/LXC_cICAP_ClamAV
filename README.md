@@ -44,7 +44,6 @@ A few notes before you start:
 - You might use Squid as your main proxy server -- mind that the Squid ICAP integration/implementation is beyond our scope here. You'll find more information about this [here](https://wiki.squid-cache.org/ConfigExamples/ContentAdaptation/C-ICAP).
 - Obviously, you can submit to ICAP what you can read & see, therefore [SSL Bumping/SSL interception](https://wiki.squid-cache.org/Features/SslBump) might be advised on your proxy subsystem in order to "intercept" SSL/TLS encrypted streams.
 - The ```ConcurrentDatabaseReload yes``` parameter which is set within [```/etc/clamav/clamd.conf```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/clamav/clamd.conf) will require you to have enough free system resources (2x operational used memory, 4GB shall be enough) in order to temporarily load a second ClamAV scanning engine while scanning continues using the first engine. Once fully loaded, the new engine takes over while the previous goes to heaven.
-- You're able to address either SquidClamAV service [OR] the srv_clamav c-icap service, which can be useful for testings etc.
 - [```MALWARE_FOUND```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/opt/c-icap/share/c_icap/templates/squidclamav/en-US/MALWARE_FOUND) replacement HTML page has been customized in order to provide a somewhat better looking block page in the occurrence of offending bits found by ClamAV (see below).
 <img src="images/MALWARE_FOUND.png" />
 
@@ -73,13 +72,13 @@ pct create 100 local:vztmpl/alpine-3.21-default_20241217_amd64.tar.xz \
 --nameserver 9.9.9.9 \
 --searchdomain local.lan \
 --features nesting=1 \
---net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.44/24,gw=192.168.1.254,type=veth \
---net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.44/24,type=veth \
+--net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.45/24,gw=192.168.1.254,type=veth \
+--net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.45/24,type=veth \
 --start false
 
 pct start 100
 ````
-## 2: Install the needed components on our newly created/booted Alpine LXC Container:
+## 2: Install the needed components on your newly created/booted Alpine LXC Container:
 
 There are two options using the deployment script provided:
 
@@ -89,6 +88,7 @@ There are two options using the deployment script provided:
 The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.4.1-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
+Open a root shell on your freshly created LXC container and run:
 
 ```
 mkdir -p /tmp/install && cd /tmp/install
@@ -323,13 +323,13 @@ Below you'll find which signatures I'm currently whitelisting / read Troubleshoo
 /bin/cat << 'EOF' > /var/lib/clamav/localwhitelist.ign2
 Sanesecurity.Foxhole.GZip_js
 SecuriteInfo.com.JS.Obfus-2420
-SecuriteInfo.com.Spam-111701
+SecuriteInfo.com.PUA.HTML.Tiktoktracker-2
 SecuriteInfo_Suspicious_Phishing_Mail_6
 SecuriteInfo_Suspicious_Phishing_2
-SecuriteInfo.com.PUA.HTML.Tiktoktracker-2
-SecuriteInfo.com.Spam-114751
 SecuriteInfo.com.Spam-343
 SecuriteInfo.com.Spam-6383
+SecuriteInfo.com.Spam-114751
+SecuriteInfo.com.Spam-111701
 EOF
 ```
 
