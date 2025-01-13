@@ -1,0 +1,22 @@
+#!/bin/sh
+LOG_DIR=/var/log/c-icap
+ARCHIVE_DATE="$(date +%Y.%m.%d_%H:%M:%S)"
+ARCHIVE_DIR=_archives
+
+cd $LOG_DIR
+echo "Daily $LOG_DIR compression...";
+for DIR in $(find ./ -name "*.log" | sed "s|^./||"); do
+  mkdir -p "$ARCHIVE_DIR"
+  echo -n "compressing $LOG_DIR/$DIR ... ";
+  if tar czf "${ARCHIVE_DIR}/${ARCHIVE_DATE}_$DIR.tar.gz" "$DIR"; then
+    rm -rf "$DIR";
+    echo "done"
+  else
+    echo "failed";
+  fi
+  mkdir -p "$LOG_DIR";
+done
+
+##### reconfigure seems to crash, investigating...
+#test ! -e /var/run/c-icap/c-icap.pid || echo -n "reconfigure" > /var/run/c-icap/c-icap.ctl
+rc-service c-icap restart

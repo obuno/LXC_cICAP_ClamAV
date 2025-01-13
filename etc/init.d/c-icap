@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+name=c-icap
+command="/opt/c-icap/bin/c-icap"
+command_args="-D -d 5"
+command_user="root:root"
+pidfile="/var/run/c-icap/c-icap.pid"
+
+depend() {
+    need net
+    after c-clamd
+}
+
+start_pre() {
+    mkdir -p /var/run/c-icap
+    chown -R cicap:cicap /var/run/c-icap
+}
+
+stop() {
+    ebegin "Stopping c-icap"
+    start-stop-daemon --stop --retry 60 --pidfile /var/run/c-icap/c-icap.pid
+    eend $? "Failed to stop c-icap"
+}
