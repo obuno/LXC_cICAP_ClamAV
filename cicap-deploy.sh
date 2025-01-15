@@ -261,7 +261,8 @@ tar -xzf "c_icap-${cicapBaseVersion}.tar.gz"
 tar -xzf "c_icap_modules-${cicapModuleVersion}.tar.gz"
 
 cd c_icap-${cicapBaseVersion}
-./configure --quiet --prefix=/opt/c-icap --enable-large-files
+#./configure --quiet --prefix=/opt/c-icap --enable-large-files
+./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe' --without-bdb --prefix=/opt/c-icap --enable-large-files
 
 # Reaplace HTTP 1.0 with HTTP 1.1
 sed -i 's/HTTP\/1.0/HTTP\/1.1/g' utils/c-icap-client.c
