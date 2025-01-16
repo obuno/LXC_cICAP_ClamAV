@@ -49,8 +49,8 @@
 #    --nameserver 9.9.9.9 \
 #    --searchdomain local.lan \
 #    --features nesting=1 \
-#    --net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.44/24,gw=192.168.1.254,type=veth \
-#    --net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.44/24,type=veth \
+#    --net0 name=eth0,bridge=vmbr1,tag=100,ip=192.168.13.45/24,gw=192.168.1.254,type=veth \
+#    --net1 name=eth1,bridge=vmbr9,tag=999,ip=10.1.13.45/24,type=veth \
 #    --start false
 #    
 #    pct start 100
@@ -342,11 +342,11 @@ cp -r * /opt/c-icap/share/
 
 cp /opt/c-icap/bin/c-icap-client /usr/local/bin/
 
-sed -i '/unset/i. $HOME/.profile' /etc/profile
-
 echo "; ####################################################"
 echo "; ###### cICAP root shell aliases ####################"
 echo "; ####################################################"
+
+sed -i '/unset/i. $HOME/.profile' /etc/profile
 
 /bin/cat << 'EOF' > /root/.profile
 ENV=$HOME/.ashrc; export ENV
