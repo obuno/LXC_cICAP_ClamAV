@@ -281,8 +281,7 @@ I would highly recommend you to add/test the following unofficial ClamAV databas
 
 You can test your setup using a few available Malware Test sites on the internet:
 
-https://eicar.eu   
-https://sophostest.com   
+https://www.wicar.org/test-malware.html   
 https://www.amtso.org/security-features-check/   
 https://www.ikarussecurity.com/wp-content/downloads/eicar_com.zip   
 https://pkg.opnsense.org/test/eicar.com.txt   
