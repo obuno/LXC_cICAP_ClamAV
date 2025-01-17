@@ -296,6 +296,8 @@ You can easily maintain you Alpine setup using the apk update/upgrade routine:
 - ```apk update```
 - ```apk upgrade```
 
+However, I currently tend to simply re-deploy a new container. I'm keeping this development up-to-date usually, hence kill/new-born is probably the most resilient approach.
+
 ## Troubleshooting:
 
 ### General troubleshooting information:
@@ -307,7 +309,6 @@ You can easily maintain you Alpine setup using the apk update/upgrade routine:
 - you should run ```icap-logs | grep FOUND``` after early deployment in order to spot presumed false positive signatures.
 - you can view in real time the client IP, requested URL's and potential matching ClamAV signature using ```icap-logs | egrep "X-Client-IP|URL requested|FOUND"```
 - should you think that some signatures might trigger on false positive, you're able to [whitelist them](https://www.securiteinfo.com/clamav-antivirus/whitelisting-clamav-signatures.shtml).
-- Within my setup I'm almost always white listing this signature: ```Sanesecurity.Foxhole.GZip_js``` within a local file called ```/var/lib/clamav/localwhitelist.ign2```
 - for SquidClamAV, the ICAP client should have these properties set accordingly: IP of your container | Service port = TCP:1345 | Service Name = squidclamav | Type = REQMOD or RESPMOD
 
 ### Implementation specifics:
@@ -317,19 +318,21 @@ You can easily maintain you Alpine setup using the apk update/upgrade routine:
 
 ### Personal signatures whitelist:
 
-Below you'll find which signatures I'm currently whitelisting / read Troubleshooting #3.
+Below you'll find which signatures I'm currently whitelisting / see Troubleshooting #3.
 
 ```
 /bin/cat << 'EOF' > /var/lib/clamav/localwhitelist.ign2
 Sanesecurity.Foxhole.GZip_js
 SecuriteInfo.com.JS.Obfus-2420
 SecuriteInfo.com.PUA.HTML.Tiktoktracker-2
+SecuriteInfo.com.PUA.JS.Obfus-2552
+SecuriteInfo.com.PUA.JS.Obfus-2185
 SecuriteInfo_Suspicious_Phishing_Mail_6
 SecuriteInfo_Suspicious_Phishing_2
 SecuriteInfo.com.Spam-343
 SecuriteInfo.com.Spam-6383
-SecuriteInfo.com.Spam-114751
 SecuriteInfo.com.Spam-111701
+SecuriteInfo.com.Spam-114751
 EOF
 ```
 

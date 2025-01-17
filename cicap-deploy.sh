@@ -365,6 +365,7 @@ alias size='for i in G M K; do    du -ah | grep [0-9]$i | sort -nr -k 1; done | 
 alias squidclamr='echo -n "squidclamav:cfgreload" > /var/run/c-icap/c-icap.ct'
 EOF
 
+printf ${green}"[*] cICAP aliases all set..."${default}
 echo    # (optional) move to a new line
 
 echo "; ####################################################"
