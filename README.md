@@ -296,7 +296,7 @@ You can easily maintain you Alpine setup using the apk update/upgrade routine:
 - ```apk update```
 - ```apk upgrade```
 
-However, I currently tend to simply re-deploy a new container. I'm keeping this development up-to-date usually, hence kill/new-born is probably the most resilient approach.
+However, I currently tend to simply re-deploy a new container. I'm keeping this development up-to-date usually, hence destroy/recreate is probably the most resilient approach.
 
 ## Troubleshooting:
 
