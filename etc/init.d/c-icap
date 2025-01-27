@@ -12,8 +12,9 @@ depend() {
 }
 
 start_pre() {
-    mkdir -p /var/run/c-icap
-    chown -R cicap:cicap /var/run/c-icap
+    mkdir -p /var/run/c-icap/
+    chown -R cicap:cicap /var/run/c-icap/
+    chown -R cicap:cicap /var/log/c-icap/
 }
 
 stop() {

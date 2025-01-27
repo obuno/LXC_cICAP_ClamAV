@@ -298,10 +298,6 @@ addgroup -g 1000 -S cicap
 addgroup clamav cicap
 adduser -u 1000 -D -S -G cicap cicap
 
-chown -R cicap:cicap /var/run/c-icap/
-chown -R cicap:cicap /var/log/c-icap/
-chown -R cicap:cicap /opt/c-icap/
-
 cd /tmp/install/LXC_cICAP_ClamAV/etc/
 cp -R * /etc/
 
@@ -316,10 +312,14 @@ git clone https://github.com/darold/squidclamav.git
 cd squidclamav/
 ./configure --with-c-icap=/opt/c-icap
 
-# Reaplace HTTP 1.0 with HTTP 1.1
+# Replace HTTP 1.0 with HTTP 1.1
 sed -i 's/HTTP\/1.0/HTTP\/1.1/g' src/squidclamav.c
 
 make && make install
+
+chown -R cicap:cicap /var/run/c-icap/
+chown -R cicap:cicap /var/log/c-icap/
+chown -R cicap:cicap /opt/c-icap/
 
 chmod 0755 /etc/periodic/hourly/freshclam
 chmod 0755 /etc/periodic/daily/c-icap-logs-archive
