@@ -3,7 +3,6 @@
 name=c-icap
 command="/opt/c-icap/bin/c-icap"
 command_args="-D -d 5"
-command_user="root:root"
 pidfile="/var/run/c-icap/c-icap.pid"
 
 depend() {
