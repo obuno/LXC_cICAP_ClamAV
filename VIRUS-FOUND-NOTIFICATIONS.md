@@ -1,7 +1,6 @@
 # LXC_cICAP_ClamAV [ VIRUS FOUND ] SMTP notifications service
 
-I made this document in order to provide potential ideas and solutions in order to get email/smtp notifications from your LXC_cICAP_ClamAV appliance(s) on VIRUS FOUND logs entry.   
-The idea here is to trigger an outbound email in the occurrence of a ClamAV/Squidclamav "VIRUS FOUND" positive ICAP submission.   
+I made this document in order to provide potential ideas and solutions in order to get email/smtp notifications from your LXC_cICAP_ClamAV appliance(s) on VIRUS FOUND logs entry. The idea here is to trigger an outbound email in the occurrence of a ClamAV/Squidclamav "VIRUS FOUND" positive ICAP submission. 
 
 A few notes:
 
