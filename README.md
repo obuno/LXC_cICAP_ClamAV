@@ -85,7 +85,7 @@ There are two options using the deployment script provided:
 - Deploy Alpine Linux distribution using the ```/main/``` repository
 - Deploy Alpine Linux distribution using the ```/edge/``` repository
 
-The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.4.1-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
+The main differences are the apk packages retrieved, the ```/main/``` repository currently host [ClamAV 1.2.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=v3.20&repo=&arch=&maintainer=) while the ```/edge/``` host the [ClamAV 1.4.2-r0](https://pkgs.alpinelinux.org/packages?name=clamav&branch=edge&repo=&arch=&maintainer=) package.
 
 The provided script will do everything in one shot -- You need to create & boot your container (see above) and get the script contents in a local file and run it (see below). 
 Open a root shell on your freshly created LXC container and run:
@@ -322,16 +322,7 @@ Below you'll find which signatures I'm currently whitelisting / see Troubleshoot
 ```
 /bin/cat << 'EOF' > /var/lib/clamav/localwhitelist.ign2
 Sanesecurity.Foxhole.GZip_js
-SecuriteInfo.com.JS.Obfus-2420
-SecuriteInfo.com.PUA.HTML.Tiktoktracker-2
-SecuriteInfo.com.PUA.JS.Obfus-2552
-SecuriteInfo.com.PUA.JS.Obfus-2185
-SecuriteInfo_Suspicious_Phishing_Mail_6
-SecuriteInfo_Suspicious_Phishing_2
-SecuriteInfo.com.Spam-343
-SecuriteInfo.com.Spam-6383
-SecuriteInfo.com.Spam-111701
-SecuriteInfo.com.Spam-114751
+Sanesecurity.Foxhole.JS_Zip_21.UNOFFICIAL
 EOF
 ```
 

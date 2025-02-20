@@ -54,9 +54,9 @@ nLogLine="$( wc -l < /var/log/c-icap/server.log )"
 # Delimiters and mail structuring items
 virusfound="---------- cICAP/ClamAV | VIRUS FOUND ----------"
 delim="------------------------------------------------"
-delimtime="TIME --- : "
-delimurl="URL ---- : "
-delimvirus="VIRUS -- : "
+delimtime="TIME ---- : "
+delimurl="URL ----- : "
+delimvirus="THREAT -- : "
 
 # Create email structure function / UPDATE ARE NEEDED below according to your environment
 fCmail () {
