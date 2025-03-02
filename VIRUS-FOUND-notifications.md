@@ -52,17 +52,17 @@ rm -rf /tmp/virusmail || true
 nLogLine="$( wc -l < /var/log/c-icap/server.log )"
 
 # Delimiters and mail structuring items
-virusfound="---------- cICAP/ClamAV | VIRUS FOUND ----------"
-delim="------------------------------------------------"
-delimtime="TIME ---- : "
-delimurl="URL ----- : "
+virusfound="cICAP/ClamAV BLOCKED a potential Threat:"
+delim=" "
+delimtime="TIME ----- : "
+delimurl="URL ------ : "
 delimvirus="THREAT -- : "
 
 # Create email structure function / UPDATE ARE NEEDED below according to your environment
 fCmail () {
     echo "From: cicap@local.lan" > /tmp/virusmail -----------------------------------------> adaptations/update needed here
     echo "To: sysops@local.lan" >> /tmp/virusmail -----------------------------------------> adaptations/update needed here
-    echo "Subject: VIRUS FOUND" >> /tmp/virusmail
+    echo "Subject: THREAT FOUND" >> /tmp/virusmail
     echo "" >> /tmp/virusmail
 }
 
@@ -86,7 +86,6 @@ fTail () {
             # filling our final email information's
             echo "$virusfound" >> /tmp/virusmail
             echo "$delim" >> /tmp/virusmail
-            echo "" >> /tmp/virusmail                 
             echo "$delimtime" "$caughttime" >> /tmp/virusmail
             echo "$delimurl" "$urlused" >> /tmp/virusmail
             echo "$delimvirus" "$virusinfo" >> /tmp/virusmail   
