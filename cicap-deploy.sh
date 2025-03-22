@@ -203,11 +203,11 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
         zlib \
         zlib-dev \
         curl \
-        gcc=13.2.1_git20240309-r0 \
+        gcc \
         make \
         htop \
         git \
-        g++=13.2.1_git20240309-r0 \
+        g++ \
         iproute2 \
         nano \
         tcpdump \
@@ -235,11 +235,11 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
             zlib \
             zlib-dev \
             curl \
-            gcc=13.2.1_git20240309-r0 \
+            gcc \
             make \
             htop \
             git \
-            g++=13.2.1_git20240309-r0 \
+            g++ \
             iproute2 \
             nano \
             tar \
