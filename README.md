@@ -332,5 +332,4 @@ EOF
 - [x] the c-icap service now run's on a non root ```cicap``` system user account --> 👍 21/07/2024
 - [x] the ```/var/log/c-icap/server.log``` file get's big over time -- see [```c-icap-logs-archive```](https://github.com/obuno/LXC_cICAP_ClamAV/blob/main/etc/periodic/daily/c-icap-logs-archive) --> 👍 21/07/2024
 - [x] user experience improvements on the ```cicap-deploy.sh``` script --> 👍 25/11/2024
-- [x] forced gcc/g++ to version ```13.2.1``` due to c-icap compilation errors with latest versions... --> 👍 09/01/2025
 - [x] deployed ICAP port has been shifted from TCP:1344 to TCP:1345 --> 👍 13/01/2025
