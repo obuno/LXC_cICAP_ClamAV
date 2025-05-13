@@ -286,7 +286,7 @@ https://www.amtso.org/security-features-check/
 https://www.ikarussecurity.com/wp-content/downloads/eicar_com.zip   
 https://pkg.opnsense.org/test/eicar.com.txt   
 https://www.virusanalyst.com/eicar.zip   
-
+https://sanesecurity.com/support/signature-testing/   
 
 ## Updates and maintenance:
 
